@@ -1,0 +1,8 @@
+server:
+  port: 8090
+spring.cloud.stream:
+  function:
+    definition: historyEventConsumer
+  bindings:
+    historyEventConsumer-in-0:
+      destination: history-events

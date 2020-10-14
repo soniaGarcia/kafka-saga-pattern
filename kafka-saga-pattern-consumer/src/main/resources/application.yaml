@@ -1,0 +1,12 @@
+server:
+  port: 8088
+spring.cloud.stream:
+  function:
+    definition: orderEventProcessor;historyEventPublisher
+  bindings:
+    orderEventProcessor-in-0:
+      destination: order-events
+    orderEventProcessor-out-0:
+      destination: payment-events
+    historyEventPublisher-out-0:
+      destination: history-events
