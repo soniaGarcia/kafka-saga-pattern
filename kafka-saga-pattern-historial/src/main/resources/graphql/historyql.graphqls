@@ -1,0 +1,10 @@
+type HistoryResponseDTO {
+	id: ID!,
+	ordenId: Int,
+	fecha: String,
+	status: String
+}
+
+type Query {
+	historial:[HistoryResponseDTO]
+}

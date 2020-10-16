@@ -1,6 +1,7 @@
 package com.test.kafkasagapattern.historyservice.entity;
 
 import com.test.kafkasagapattern.model.enums.HistoryStatus;
+import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 @Data
 @Entity
 @ToString
-public class PurchaseOrderHistory {
+public class PurchaseOrderHistory implements Serializable {
 
     @Id
     @GeneratedValue
