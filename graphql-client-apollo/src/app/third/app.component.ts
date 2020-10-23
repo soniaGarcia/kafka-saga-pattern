@@ -15,17 +15,6 @@ export class AppComponent2 implements OnInit {
 
   ngOnInit() {
 
-    this.apollo.use('endpoint2')
-    .mutate({
-      mutation: gql`mutation {
-        createOrder(userId: "3", productId: "1") 
-        {
-          id
-        }
-      }`
-    }).subscribe(data => {
-      //successfully created vehicle entity.
-    });
   }
 
 
@@ -33,18 +22,20 @@ export class AppComponent2 implements OnInit {
 add(userId: string, productId: string) {
   return this.apollo.use('endpoint2')
     .mutate({
-      mutation: gql`mutation {
-        createOrder(userId: $userId, productId: $productId) 
-        {
+      mutation: gql`
+      mutation createOrder($userId: String!, $productId: String!) {
+        createOrder(userId: $userId, productId: $productId) {
           id
         }
-      }`,
+      }
+    `,
       variables: {
-        userId: userId,
-        productId:productId
+        userId,
+        productId
       }
     })
-    .subscribe(() => {
+    .subscribe(({ data}) => {
+      alert("Orden registrada con ID: "+data.createOrder.id)
       this.apollo.getClient().cache.reset();
     });
 }
