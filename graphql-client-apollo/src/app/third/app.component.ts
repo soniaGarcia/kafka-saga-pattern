@@ -35,7 +35,8 @@ add(userId: string, productId: string) {
       }
     })
     .subscribe(({ data}) => {
-      alert("Orden registrada con ID: "+data.createOrder.id)
+      this.data = data;
+     alert("Orden registrada con ID: "+this.data.createOrder.id)
       this.apollo.getClient().cache.reset();
     });
 }
